@@ -24,3 +24,4 @@ void playNote(int noteIndex) {
   delay(500);
   noTone(buzzerPin);
 }
+
