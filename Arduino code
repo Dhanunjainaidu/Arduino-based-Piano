@@ -1,0 +1,26 @@
+const int numButtons = 7;
+const int buttonPins[numButtons] = {2, 3, 4, 5, 6, 7, 8};
+const int buzzerPin = 9;
+
+void setup() {
+  for (int i = 0; i < numButtons; i++) {
+    pinMode(buttonPins[i], INPUT);
+  }
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  for (int i = 0; i < numButtons; i++) {
+    if (digitalRead(buttonPins[i]) == HIGH) {
+      playNote(i);
+      delay(100);
+    }
+  }
+}
+
+void playNote(int noteIndex) {
+  int notes[] = {262, 294, 330, 349, 392, 440, 494};
+  tone(buzzerPin, notes[noteIndex]);
+  delay(500);
+  noTone(buzzerPin);
+}
